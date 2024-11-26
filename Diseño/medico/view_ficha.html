@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KillCoronaVirus - Listado de pacientes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Heroicons para íconos -->
+    <script src="https://unpkg.com/@heroicons/v2/24/solid/index.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="bg-white shadow">
+        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <!-- Logo y nombre del sistema -->
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-blue-600 text-xl font-bold">KillCoronaVirus</span>
+                    </div>
+                </div>
+
+                <!-- Enlaces de navegación -->
+                <div class="flex">
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="listado_pacientes.html" 
+                           class="border-transparent text-gray-500 hover:border-blue-500 hover:text-blue-600 
+                                  inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Pacientes Tratados
+                        </a>
+                        <a href="{% url 'patient_search' %}"
+                           class="border-transparent text-gray-500 hover:border-blue-500 hover:text-blue-600
+                                  inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Buscar Paciente
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Menú de usuario -->
+                <div class="flex items-center">
+                    <div class="ml-3 relative">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-gray-700">Dr. Luis</span>
+                            <a href="{% url 'logout' %}" 
+                               class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                Cerrar Sesión
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú móvil -->
+        <div class="sm:hidden">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="listado_pacientes.html"
+                   class="text-gray-500 hover:text-blue-600 block pl-3 pr-4 py-2 text-base font-medium">
+                    Pacientes Tratados
+                </a>
+                <a href="{% url 'patient_search' %}"
+                   class="text-gray-500 hover:text-blue-600 block pl-3 pr-4 py-2 text-base font-medium">
+                    Buscar Paciente
+                </a>
+            </div>
+        </div>
+    </nav>
+
+<main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+    <!-- Información del paciente -->
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-6">
+        <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
+            <div>
+                <h3 class="text-2xl font-bold leading-6 text-gray-900">
+                    Patricio Arias
+                </h3>
+                <p class="mt-1 max-w-2xl text-sm text-gray-500">RUT: 12.345.678-9</p>
+            </div>
+            <a href="{% url 'new_medical_record' patient.id %}" 
+               class="inline-flex items-center px-4 py-2 border border-transparent 
+                      text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 
+                      hover:bg-blue-700 focus:outline-none focus:ring-2 
+                      focus:ring-offset-2 focus:ring-blue-500">
+                Nueva Atención
+            </a>
+        </div>
+    </div>
+
+    <!-- Historial de atenciones -->
+    <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-6">
+        <div class="px-4 py-5 sm:px-6 bg-gray-50">
+            <h3 class="text-lg leading-6 font-medium text-gray-900">
+                Atención del 27/05/24 12:00
+            </h3>
+            <p class="mt-1 max-w-2xl text-sm text-gray-500">
+                Dr. Luis - Psiquiatra
+            </p>
+        </div>
+        <div class="border-t border-gray-200">
+            <dl>
+                <!-- Anamnesis -->
+                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">Anamnesis</dt>
+                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">El paciente no ha tenido ningún síntoma</dd>
+                </div>
+
+                <!-- Diagnóstico -->
+                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">Diagnóstico</dt>
+                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">Sano :D</dd>
+                </div>
+
+                <!-- Medicamentos recetados -->
+                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">Medicamentos Recetados</dt>
+                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        <ul class="border border-gray-200 rounded-md divide-y divide-gray-200">
+                            <li class="pl-3 pr-4 py-3 text-sm text-gray-500">
+                                No se recetaron medicamentos
+                            </li>
+                        </ul>
+                    </dd>
+                </div>
+
+                <!-- Exámenes solicitados -->
+                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                    <dt class="text-sm font-medium text-gray-500">Exámenes Solicitados</dt>
+                    <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        <ul class="border border-gray-200 rounded-md divide-y divide-gray-200">
+                            <li class="pl-3 pr-4 py-3 text-sm text-gray-500">
+                                No se solicitaron exámenes
+                            </li>
+                        </ul>
+                    </dd>
+                </div>
+            </dl>
+        </div>
+    </div>
+</main>

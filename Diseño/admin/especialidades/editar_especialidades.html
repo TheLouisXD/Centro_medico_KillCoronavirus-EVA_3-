@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KillCoronaVirus - Editar especialidad</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Heroicons para íconos -->
+    <script src="https://unpkg.com/@heroicons/v2/24/solid/index.js"></script>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="bg-white shadow">
+        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <!-- Logo y nombre del sistema -->
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-blue-600 text-xl font-bold">KillCoronaVirus</span>
+                    </div>
+                </div>
+
+                <!-- Enlaces de navegación -->
+                <div class="flex">
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="listado_pacientes.html" 
+                           class="border-transparent text-gray-500 hover:border-blue-500 hover:text-blue-600 
+                                  inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Medicamentos
+                        </a>
+                        <a href="{% url 'patient_search' %}"
+                           class="border-transparent text-gray-500 hover:border-blue-500 hover:text-blue-600
+                                  inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Examenes
+                        </a>
+                        <a href="{% url 'patient_search' %}"
+                           class="border-transparent text-gray-500 hover:border-blue-500 hover:text-blue-600
+                                  inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Medicos
+                        </a>
+                        <a href="{% url 'patient_search' %}"
+                           class="border-transparent text-gray-500 hover:border-blue-500 hover:text-blue-600
+                                  inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Especialidades
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Menú de usuario -->
+                <div class="flex items-center">
+                    <div class="ml-3 relative">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-gray-700">Luis</span>
+                            <a href="{% url 'logout' %}" 
+                               class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                Cerrar Sesión
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú móvil -->
+        <div class="sm:hidden">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="{% url 'doctor_patients' %}"
+                   class="text-gray-500 hover:text-blue-600 block pl-3 pr-4 py-2 text-base font-medium">
+                    Pacientes Tratados
+                </a>
+                <a href="{% url 'patient_search' %}"
+                   class="text-gray-500 hover:text-blue-600 block pl-3 pr-4 py-2 text-base font-medium">
+                    Buscar Paciente
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="max-w-5xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div class="sm:flex sm:items-center">
+            <div class="sm:flex-auto">
+                <h1 class="text-2xl font-semibold text-gray-900 text-center">Editar especialidad</h1>
+            </div>
+        </div>
+        
+        <!-- Información del medicamento -->
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-6">
+            <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
+                <div>
+                    <h3 class="text-2xl font-bold leading-6 text-gray-900">
+                        Psiquiatria
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+        <form action="{% url 'save_medical_record' patient.id %}" method="POST">
+            <div class="bg-white shadow overflow-hidden sm:rounded-lg mb-6">
+                <div class="px-4 py-5 sm:px-6">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900">Información de la especialidad</h3>
+                    <div class="mt-4">
+                        <label for="med_name" class="block text-sm font-medium text-gray-700">Nombre de la especialidad</label>
+                        <input type="text" id="med_name" name="med_name" value="Psiquiatria" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required>
+                    </div>
+                    <div class="mt-4">
+                        <label for="med_lab" class="block text-sm font-medium text-gray-700">Descripcion</label>
+                        <input type="text" id="med_lab" name="med_lab" value="La psiquiatría o siquiatría es la especialidad médica dedicada al estudio de los trastornos mentales de origen genético o neurológico con el objetivo de prevenir, evaluar, diagnosticar, tratar y rehabilitar a las personas con trastornos mentales" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" required>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="flex justify-end space-x-4">
+                <button type="button" onclick="window.history.back();" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-gray-700 bg-gray-200 hover:bg-gray-300">
+                    Volver
+                </button>
+                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    Guardar
+                </button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

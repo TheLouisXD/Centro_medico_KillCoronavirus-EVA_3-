@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KillCoronaVirus - Listado de examenes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Heroicons para íconos -->
+    <script src="https://unpkg.com/@heroicons/v2/24/solid/index.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="bg-white shadow">
+        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <!-- Logo y nombre del sistema -->
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-blue-600 text-xl font-bold">KillCoronaVirus</span>
+                    </div>
+                </div>
+
+                <!-- Enlaces de navegación -->
+                <div class="flex">
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="listado_pacientes.html" 
+                           class="border-transparent text-gray-500 hover:border-blue-500 hover:text-blue-600 
+                                  inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Medicamentos
+                        </a>
+                        <a href="{% url 'patient_search' %}"
+                           class="border-transparent text-gray-500 hover:border-blue-500 hover:text-blue-600
+                                  inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Examenes
+                        </a>
+                        <a href="{% url 'patient_search' %}"
+                           class="border-transparent text-gray-500 hover:border-blue-500 hover:text-blue-600
+                                  inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Medicos
+                        </a>
+                        <a href="{% url 'patient_search' %}"
+                           class="border-transparent text-gray-500 hover:border-blue-500 hover:text-blue-600
+                                  inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Especialidades
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Menú de usuario -->
+                <div class="flex items-center">
+                    <div class="ml-3 relative">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-gray-700">Luis</span>
+                            <a href="{% url 'logout' %}" 
+                               class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                Cerrar Sesión
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú móvil -->
+        <div class="sm:hidden">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="{% url 'doctor_patients' %}"
+                   class="text-gray-500 hover:text-blue-600 block pl-3 pr-4 py-2 text-base font-medium">
+                    Pacientes Tratados
+                </a>
+                <a href="{% url 'patient_search' %}"
+                   class="text-gray-500 hover:text-blue-600 block pl-3 pr-4 py-2 text-base font-medium">
+                    Buscar Paciente
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div class="px-4 sm:px-6 lg:px-8">
+            <div class="sm:flex sm:items-center">
+                <div class="sm:flex-auto">
+                    <h1 class="text-2xl font-semibold text-gray-900">Especialidades</h1>
+                    <p class="mt-2 text-sm text-gray-700">
+                        Listado de las especialidades que pueden tener los medicos registrados en la base de datos.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Tabla de pacientes -->
+            <div class="mt-8 flex flex-col">
+                <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                    <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+                        <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 rounded-lg">
+                            <table class="min-w-full divide-y divide-gray-300">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900">
+                                            Nombre
+                                        </th>
+                                        <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                                            Descripcion
+                                        </th>
+                                        <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                                            <span class="sr-only">Acciones</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200 bg-white">
+                                    <tr>
+                                        <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm">
+                                            <div class="font-medium text-gray-900">
+                                                Psiquiatria
+                                            </div>
+                                        </td>
+                                        <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 max-w-xs truncate">
+                                            La psiquiatría o siquiatría es la especialidad médica dedicada al estudio de los trastornos mentales de origen genético o neurológico con el objetivo de prevenir, evaluar, diagnosticar, tratar y rehabilitar a las personas con trastornos mentales
+                                        </td>
+                                        <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                                            <a href="view_ficha.html" 
+                                               class="inline-flex items-center px-3 py-1.5 border border-transparent 
+                                                      text-xs font-medium rounded-full shadow-sm text-white 
+                                                      bg-blue-600 hover:bg-blue-700 focus:outline-none 
+                                                      focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                                Ver más
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

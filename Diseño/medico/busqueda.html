@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KillCoronaVirus - Panel Médico</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Heroicons para íconos -->
+    <script src="https://unpkg.com/@heroicons/v2/24/solid/index.js"></script>
+</head>
+<body class="bg-gray-50">
+    <!-- Navbar -->
+    <nav class="bg-white shadow">
+        <div class="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <!-- Logo y nombre del sistema -->
+                <div class="flex">
+                    <div class="flex-shrink-0 flex items-center">
+                        <span class="text-blue-600 text-xl font-bold">KillCoronaVirus</span>
+                    </div>
+                </div>
+
+                <!-- Enlaces de navegación -->
+                <div class="flex">
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="listado_pacientes.html" 
+                           class="border-transparent text-gray-500 hover:border-blue-500 hover:text-blue-600 
+                                  inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Pacientes Tratados
+                        </a>
+                        <a href="{% url 'patient_search' %}"
+                           class="border-transparent text-gray-500 hover:border-blue-500 hover:text-blue-600
+                                  inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+                            Buscar Paciente
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Menú de usuario -->
+                <div class="flex items-center">
+                    <div class="ml-3 relative">
+                        <div class="flex items-center space-x-3">
+                            <span class="text-gray-700">Dr. Luis</span>
+                            <a href="{% url 'logout' %}" 
+                               class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                Cerrar Sesión
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú móvil -->
+        <div class="sm:hidden">
+            <div class="pt-2 pb-3 space-y-1">
+                <a href="{% url 'doctor_patients' %}"
+                   class="text-gray-500 hover:text-blue-600 block pl-3 pr-4 py-2 text-base font-medium">
+                    Pacientes Tratados
+                </a>
+                <a href="{% url 'patient_search' %}"
+                   class="text-gray-500 hover:text-blue-600 block pl-3 pr-4 py-2 text-base font-medium">
+                    Buscar Paciente
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div class="px-4 py-6 sm:px-0">
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="px-4 py-5 sm:p-6">
+                    <div class="text-center">
+                        <h1 class="text-3xl font-bold text-gray-900 mb-4">
+                            Busqueda de pacientes
+                        </h1>
+                        <p class="text-gray-600">
+                            Ingrese el rut del paciente para buscar su ficha médica
+                        </p>
+                    </div>
+
+                    <!-- Formulario de búsqueda -->
+                    <form class="mt-8 space-y-6" action="view_ficha.html" method="POST">
+                    <div class='max-w-md mx-auto border rounded-lg shadow-sm'>
+                        <div class="relative flex items-center w-full h-12 rounded-lg focus-within:shadow-lg bg-white overflow-hidden">
+                            <div class="grid place-items-center h-full w-12 text-gray-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </div>
+                    
+                            <input
+                            class="peer h-full w-full outline-none text-sm text-gray-700 pr-2"
+                            type="text"
+                            id="search"
+                            placeholder="Ingrese rut"/>
+                    </form>
+                    </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
